@@ -25,10 +25,16 @@ class Scraper
     possible_sites = ["linkedin", "github", "twitter"]
     social_media.each do |site|
       site_link = site['href']
+      #if the site name starts with "www.":
       site_name = site_link[/#{"www."}(.*?)#{".com"}/m, 1]
+      #binding.pry
       if site_name == nil
+        #if the site name starts with "https://" or even "//":
         site_name = site_link[/#{"\/\/"}(.*?)#{".com"}/m, 1]
-      elsif !possible_sites.include?(site_name)
+      end
+      if !possible_sites.include?(site_name)
+        #if this is a blog, this conditional should evaluate to true,
+        #in which case, we must set the key to "blog"
         site_name =  "blog"
       end
       #binding.pry
