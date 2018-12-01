@@ -39,8 +39,3 @@ class Scraper
     scraped_student
   end
 end
-
-html = File.read("./fixtures/student-site/students/joe-burgess.html")
-profile_page = Nokogiri::HTML(html)
-social_media = profile_page.css("div.social-icon-container a")
-puts social_media[0]
