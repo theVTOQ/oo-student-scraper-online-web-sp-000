@@ -31,7 +31,7 @@ class Scraper
       elsif !possible_sites.include?(site_name)
         site_name =  "blog"
       end
-      #binding.pry
+      binding.pry
       scraped_student[site_name.to_sym] = site_link
     end
 
